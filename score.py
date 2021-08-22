@@ -12,10 +12,13 @@ def init():
 def run(data):
     try:
         data = json.loads(data)['data']
-        data_df = pd.DataFrame.from_dict(data)
+        print(data)
+        data = pd.DataFrame.from_dict(data)
+        print(data)
         # Run inference
-        prediction = model.predict(data).tolist()
-        return prediction
+        prediction = model.predict(data)
+        print(prediction)
+        return prediction.tolist()
 
     except Exception as e:
         error = str(e)
