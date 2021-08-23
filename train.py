@@ -33,7 +33,7 @@ dataset = TabularDatasetFactory.from_delimited_files(path=url_path)
 data_df = dataset.to_pandas_dataframe()
 
 # Split data to features and labels dataframe
-x_df, y_df = preprocess_data(dataset)
+x_df, y_df = preprocess_data(data_df)
 
 # Split data into train and test sets.
 x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2)
