@@ -8,12 +8,12 @@ Explain any special installation steps - explain how to set up this project in A
 ## Dataset
 
 ### Overview
-*TODO*: Explain about the data you are using and where you got it from.
 The dataset we will be using in this project is called *Heart failure clinical records Data Set* and is publicly available from UCI Machine Learning Repository. 
+
+The dataset contains medical records of 299 patients who had heart failure, collected during their follow-up period, where each patient profile has 13 clinical features.
 
 Here is a [link](https://archive.ics.uci.edu/ml/machine-learning-databases/00519/heart_failure_clinical_records_dataset.csv) to the data.  
 
-The dataset contains medical records of 299 patients who had heart failure, collected during their follow-up period, where each patient profile has 13 clinical features.
 
 ### Task
 
