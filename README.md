@@ -152,7 +152,9 @@ The best model given by HyperDrive resulted in training accuracy of **0.92%**. T
 
 ## Model Deployment
 
-Here we use the best ML model from AutoML experiment and deploy it using Azure Container Instance (ACI). The model can be consumed via a REST API
+Here we use the best ML model from AutoML experiment and deploy it using Azure Container Instance (ACI). The model can be consumed via a REST API.
+
+We also included file containing the environment details `myenv.yml` to ensure reproducibility.
 
 To query the endpoint we use a 3 samples from the dataset so that we can evaluate whether the model performed well on the input data and retured the right prediction
 
