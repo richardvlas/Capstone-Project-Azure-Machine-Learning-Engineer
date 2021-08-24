@@ -85,6 +85,7 @@ Once the AutoML experiment is completed, we then select the best model in terms 
 The best performing model trained by AutoML was `VotingEnsemble` with `AUC_weighted = 0.92` as can be seen in the screenshot below
 
 <img src="images/AMLBest_Model.PNG" width=75%>
+<img src="images/AMLBest_Model2.PNG" width=75%>
 
 **Best model in Azure Portal**
 
