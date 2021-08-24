@@ -82,7 +82,9 @@ Once the AutoML experiment is completed, we then select the best model in terms 
 
 ### Results
 
-The best performing model trained by AutoML was `VotingEnsemble` with `AUC_weighted = 0.92` as can be seen in the screenshot below
+The best performing model trained by AutoML was `VotingEnsemble` with `AUC_weighted = 0.935` as can be seen in the screenshot below.
+
+Few parameters of its inner estimators are shown as well as its individual weights used to aggregate the estimators and integers designating the different estimators used in the Ensemble. For more comprehensive details please see [this](automl.ipynb) notebook.
 
 <img src="images/AMLBest_Model.PNG" width=75%>
 <img src="images/AMLBest_Model2.PNG" width=75%>
