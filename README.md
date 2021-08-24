@@ -66,6 +66,21 @@ df = dataset.to_pandas_dataframe()
 ## Automated ML
 *TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
 
+In this part of the project we make a use of Microsoft Azure Cloud to configure a cloud-based machine learning model and consequently deploy it. We first create a compute target with the following setting: `vm_size="Standard_D2_V2"`, `min_nodes=0`, `max_nodes=4` and then train a set of machine learning models leveraging AutoML to automaticaly train and tune a them using given target metric. In this case the selected target metric is `AUC_weighted`. A datastore retrieved by `data_store = ws.get_default_datastore()` is used to upload the dataset used to train the ML model and it is registered by using the following command  
+
+```python
+# Create AML Dataset and register it into Workspace
+dataset = Dataset.Tabular.from_delimited_files(dataset_url)
+# Register Dataset in Workspace
+dataset = dataset.register(workspace=ws,
+                           name=key,
+                           description=description_text)
+```
+
+Once the AutoML experiment is completed, we then select the best model in terms of `AUC_weighted` out of all models trained and deploy it using Azure Container Instance (ACI). The model can now be consumed via a REST API.
+
+
+
 ### Results
 *TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
 
