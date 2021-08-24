@@ -76,7 +76,39 @@ dataset = dataset.register(workspace=ws,
                            description=description_text)
 ```
 
-Once the AutoML experiment is completed, we then select the best model in terms of `AUC_weighted` out of all models trained and deploy it using Azure Container Instance (ACI). The model can now be consumed via a REST API.
+### AutoML Configuration and Settings
+As mentioned above in the dataset section we are dealing with a binary classification. Therefore the argument `task` is set to `classification` and the since we are predicting `DEATH_EVENT` we also need to set `label_column_name="DEATH_EVENT"`. The dataset itself specified in `training_data=train_ds` and the compute target that we provisioned is set with `compute_target=aml_compute`.
+
+To help manage child runs and when they can be performed, we recommend you create a dedicated cluster per experiment, and match the number of `max_concurrent_iterations` of your experiment to the number of nodes in the cluster. This way, you use all the nodes of the cluster at the same time with the number of concurrent child runs/iterations you want.
+
+Besides other arguments that are self-explanatory, to automate Feature engineering AzureML enables this through `featurization` that needs to be set to `True`. This way features that best characterize the patterns in the data are selected to create predictive models.
+
+Here is the code to set and configure the AutoML experiment
+
+```python
+# AutoMl settings
+automl_settings = {
+    "experiment_timeout_minutes": 30,
+    "max_concurrent_iterations": 4,
+    "primary_metric": "AUC_weighted",
+    "enable_early_stopping": True,
+    "verbosity": logging.INFO
+}
+
+# AutoMl config
+automl_config = AutoMLConfig(compute_target=aml_compute,
+                             task="classification",
+                             training_data=train_ds,
+                             label_column_name="DEATH_EVENT",
+                             n_cross_validations=5,
+                             featurization="auto",
+                             path=project_folder,
+                             debug_log = "automl_errors.log",
+                             **automl_settings                             
+                            )
+```
+
+Once the AutoML experiment is completed, we then select the best model in terms of `AUC_weighted` out of all models trained and deploy it using Azure Container Instance (ACI). So that the model can then be consumed via a REST API.
 
 
 
