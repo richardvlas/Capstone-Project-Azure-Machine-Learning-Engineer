@@ -1,9 +1,11 @@
 # Capstone Project: Azure Machine Learning Engineer
 
-*TODO:* Write a short introduction to your project.
+This project consists of two part: first part will be using Automated ML (denoted as AutoML) and the second part will use customized model whose hyperparameters are tuned using HyperDrive. The model trained by AutoML will be later on deployed and could be used as a ML service with which we can interact using REST API.
 
-## Project Set Up and Installation
-Explain any special installation steps - explain how to set up this project in AzureML.
+We will use an external dataset to train the model to classify heart failure based on clinical records and we will levarege all the different tools available in the AzureML Studio to do so. Please see the next section for more details about the dataset used in this project.
+
+
+
 
 ## Dataset
 
