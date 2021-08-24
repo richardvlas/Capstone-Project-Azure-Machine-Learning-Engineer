@@ -189,3 +189,13 @@ This [screencast](https://youtu.be/4iQA2nbgB44) shows the entire process of the 
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
 
+## Future improvements
+
+- One way to improve the ML model prediction capabilities would be to check whether the dataset is balanced, meaning if the data for both cases that we are trying to predict are equally represented in the dataset. Balancing data is a way to ensure that the ML model is learning both cases equally. In extreme case where one class is overrepresented in the dataset the ML model would almost always predict that specific class, as the model was not exposed enough to the other class. 
+
+- We could also increase the `experiment_timeout_minutes` and let AutoML train for longer. 
+
+- The primary metric used in the AutoML experiment is `AUC_weighted` and we could try if other metrices could be a better choice to train the model.
+
+- Another way to improve the ML model could be to try train the model using Deep learning techniques and see if that is a good aproach to take. 
+ 
