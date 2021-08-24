@@ -170,11 +170,40 @@ labels = data_df.pop('DEATH_EVENT')
 
 # Convert to JSON string
 input_data = json.dumps({"data": data_df.to_dict(orient='records')})
+```
+
+Here is how the sample input data `input_data` looks like showing its format that we used to make the request:
+
+```python
+{"data": [{"age": 42.0, "anaemia": 1, "creatinine_phosphokinase": 86, "diabetes": 0, "ejection_fraction": 35, "high_blood_pressure": 0, "platelets": 365000.0, "serum_creatinine": 1.1, "serum_sodium": 139, "sex": 1, "smoking": 1, "time": 201}, {"age": 49.0, "anaemia": 0, "creatinine_phosphokinase": 972, "diabetes": 1, "ejection_fraction": 35, "high_blood_pressure": 1, "platelets": 268000.0, "serum_creatinine": 0.8, "serum_sodium": 130, "sex": 0, "smoking": 0, "time": 187}, {"age": 65.0, "anaemia": 0, "creatinine_phosphokinase": 56, "diabetes": 0, "ejection_fraction": 25, "high_blood_pressure": 0, "platelets": 237000.0, "serum_creatinine": 5.0, "serum_sodium": 130, "sex": 0, "smoking": 0, "time": 207}]}
+```
+
+And this snippet shows how we make a post request with the input data:
+
+```python
+# URL for the web service
+scoring_uri = service.scoring_uri
+
+# Set the content type
+headers = {"Content-Type": "application/json"}
 
 # Make the request and display the response
 resp = requests.post(scoring_uri, input_data, headers=headers)
-print(resp.json())
 ```
+
+The output compared to the groundtrough labels from the dataset is shown here:
+
+```python
+print(f"Predictions from Service: {resp.json()}\n")
+print(f"Data Labels: {labels.tolist()}")
+```
+
+```
+Predictions from Service: [0, 0, 0]
+
+Data Labels: [0, 0, 0]
+```
+
 
 **Active Endpoint**
 
