@@ -64,7 +64,6 @@ df = dataset.to_pandas_dataframe()
 ```
 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
 
 In this part of the project we make a use of Microsoft Azure Cloud to configure a cloud-based machine learning model and consequently deploy it. We first create a compute target with the following setting: `vm_size="Standard_D2_V2"`, `min_nodes=0`, `max_nodes=4` and then train a set of machine learning models leveraging AutoML to automaticaly train and tune a them using given target metric. In this case the selected target metric is `AUC_weighted`. A datastore retrieved by `data_store = ws.get_default_datastore()` is used to upload the dataset used to train the ML model and it is registered by using the following command  
 
@@ -82,9 +81,19 @@ Once the AutoML experiment is completed, we then select the best model in terms 
 
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+The best performing model trained by AutoML was `VotingEnsemble` with `AUC_weighted = 0.92` as can be seen in the screenshot below
+
+<img src="images/AMLBest_Model.PNG" width=75%>
+
+**Best model in Azure Portal**
+
+<img src="images/AMLBest_Model_in_Azure.PNG" width=75%>
+
+**RunDetails widget**
+
+<img src="images/AMLRunDetails_01.PNG" width=75%>
+<img src="images/AMLRunDetails_02.PNG" width=75%>
 
 ## Hyperparameter Tuning
 
