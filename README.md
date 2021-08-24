@@ -37,7 +37,6 @@ The 12 clinical input features and the target feature are as follows:
 - [target] death event: if the patient deceased during the follow-up period (boolean)
 
 
-
 ### Access
 In the cell below, we write code to access the data that we will store and use on Azure:
 
@@ -54,7 +53,7 @@ if key in ws.datasets.keys():
 else:
     # Create AML Dataset and register it into Workspace
     dataset = Dataset.Tabular.from_delimited_files(dataset_url)
-    #Register Dataset in Workspace
+    # Register Dataset in Workspace
     dataset = dataset.register(workspace=ws,
                                name=key,
                                description=description_text)
@@ -73,9 +72,40 @@ df = dataset.to_pandas_dataframe()
 ## Hyperparameter Tuning
 *TODO*: What kind of model did you choose for this experiment and why? Give an overview of the types of parameters and their ranges used for the hyperparameter search
 
+In this sectio I have used a custom-coded model — a standard Scikit-learn Logistic Regression - which hyperparameters I optimized using HyperDrive.
+
+A Hyperdrive run is used to sweep over model parameters. The following steps are part of the process:
+
+- Data preprocessing
+- Splitting data into train and test sets
+- Setting logistic regression parameters:
+    - --C - Inverse of regularization strength
+    - --max_iter - Maximum number of iterations convergence
+- Azure Cloud resources configuration
+- Creating a HyperDrive configuration using the estimator, hyperparameter sampler, and policy
+- Retrieve the best run and save the model from that run
+
+**RandomParameterSampling** 
+
+Defines random sampling over a hyperparameter search space. In this sampling algorithm, parameter values are chosen from a set of discrete values or a distribution over a continuous range. This has an advantage against GridSearch method that runs all combinations of parameters and requires large amount of time to run.
+
+For the Inverse of regularization strenght parameter I have chosen uniform distribution with min=0.0001 and max=1.0 For the Maximum number of iterations convergence I inputed a range of values (5, 25, 50, 100, 200, 500, 1000)
+
+**BanditPolicy** 
+
+Class Defines an early termination policy based on slack criteria, and a frequency and delay interval for evaluation. This greatly helps to ensure if model with given parameters is not performing well, it is turned down instead of running it for any longer.
 
 ### Results
-*TODO*: What are the results you got with your model? What were the parameters of the model? How could you have improved it?
+The best model given by HyperDrive resulted in training accuracy of **0.92%**. The hyperparameters of the model are as follows:
+
+- --C = **0.544**
+- --max_iter = **25**
+
+**Improvement**
+- One way to improve the result could be to change the range of hyperparameters to extend the search space.
+- Other ways include changing the ML model completely or use a data set with much more data records if that would be a posibility
+
+
 
 *TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
 
