@@ -111,10 +111,17 @@ The best model given by HyperDrive resulted in training accuracy of **0.92%**. T
 ### Screenshots
 
 **RunDetails widget**
-<img src="images/???.png" width=75%>
+
+<img src="images/HPRunDetails1.PNG" width=75%>
+<img src="images/HPRunDetails2.PNG" width=75%>
+<img src="images/HPRunDetailsVis.PNG" width=75%>
+<img src="images/HPExp.PNG" width=75%>
+
 
 **Best model**
-<img src="images/???.png" width=75%>
+
+<img src="images/HPBestModel.PNG" width=75%>
+<img src="images/HPBestModelPortal.PNG" width=75%>
 
 
 ## Model Deployment
