@@ -183,7 +183,7 @@ print(resp.json())
 
 ## Screen Recording
 
-This [screencast](https://youtu.be/4iQA2nbgB44) shows the entire process of the working ML application and it demonstrates:
+This [screencast](https://youtu.be/TeFsuQAIhbI) shows the entire process of the working ML application and it demonstrates:
 
 - A working model
 - Demo of the deployed  model
