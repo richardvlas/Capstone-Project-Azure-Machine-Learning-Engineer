@@ -108,7 +108,14 @@ The best model given by HyperDrive resulted in training accuracy of **0.92%**. T
 
 
 
-*TODO* Remeber to provide screenshots of the `RunDetails` widget as well as a screenshot of the best model trained with it's parameters.
+### Screenshots
+
+**RunDetails widget**
+<img src="images/???.png" width=75%>
+
+**Best model**
+<img src="images/???.png" width=75%>
+
 
 ## Model Deployment
 *TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
