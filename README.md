@@ -177,7 +177,9 @@ print(resp.json())
 
 
 ## Screen Recording
-*TODO* Provide a link to a screen recording of the project in action. This is to demonstrate:
+
+This [screencast](https://youtu.be/4iQA2nbgB44) shows the entire process of the working ML application and it demonstrates:
+
 - A working model
 - Demo of the deployed  model
 - Demo of a sample request sent to the endpoint and its response
