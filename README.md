@@ -151,7 +151,30 @@ The best model given by HyperDrive resulted in training accuracy of **0.92%**. T
 
 
 ## Model Deployment
-*TODO*: Give an overview of the deployed model and instructions on how to query the endpoint with a sample input.
+
+Here we use the best ML model from AutoML experiment and deploy it using Azure Container Instance (ACI). The model can be consumed via a REST API
+
+To query the endpoint we use a 3 samples from the dataset so that we can evaluate whether the model performed well on the input data and retured the right prediction
+
+Here is a code snipet with a sample input we used to make a request to the model: 
+
+```python
+# 3 sets of data to score, so we get two results back
+data_df = test_df.sample(n=3)
+labels = data_df.pop('DEATH_EVENT')
+
+# Convert to JSON string
+input_data = json.dumps({"data": data_df.to_dict(orient='records')})
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+print(resp.json())
+```
+
+**Active Endpoint**
+
+<img src="images/AMLActive_Endpoint.PNG" width=75%>
+
 
 ## Screen Recording
 *TODO* Provide a link to a screen recording of the project in action. This is to demonstrate:
