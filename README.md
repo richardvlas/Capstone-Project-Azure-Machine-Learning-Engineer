@@ -163,6 +163,30 @@ The best model given by HyperDrive resulted in training accuracy of **0.92%**. T
 - --C = **0.544**
 - --max_iter = **25**
 
+The best model parameters are retrieved by using this code:
+
+```python
+best_run = hyperdrive_run.get_best_run_by_primary_metric()
+best_run_metrics = best_run.get_metrics()
+parameter_values = best_run.get_details()['runDefinition']['arguments']
+
+print("Best Experiment Run:")
+print(f" Best Run Id: {best_run.id}")
+print(f" Accuracy: {best_run_metrics['Accuracy']}")
+print(f" Regularization Strength: {best_run_metrics['Regularization Strength:']}")
+print(f" Max iterations: {best_run_metrics['Max iterations:']}")
+```
+
+Giving the following output:
+
+```python 
+Best Experiment Run:
+ Best Run Id: HD_7fd07718-c5c5-42f5-ae1f-bd2f62a56380_29
+ Accuracy: 0.9166666666666666
+ Regularization Strength: 0.5443967516166649
+ Max iterations: 25
+```
+
 **Improvement**
 - One way to improve the result could be to change the range of hyperparameters to extend the search space.
 - Other ways include changing the ML model completely or use a data set with much more data records if that would be a posibility
